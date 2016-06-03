@@ -11,15 +11,15 @@ function MainCtrl ($scope, $log, $interval, $timeout, dataService) {
 
 	$interval($scope.counter, 1000, 10);
 
-  dataService.getTodos(function(response){
-    var todos = response.data.todos;
-    $scope.todos =  todos;
-  });
+	dataService.getTodos(function(response){
+	var todos = response.data.todos;
+	$scope.todos =  todos;
+	});
 
-  $scope.addTodo = function() {
-    $scope.todos.unshift({name: "This is a new todo.",
-                      completed: false});
-  };
+	$scope.addTodo = function() {
+	$scope.todos.unshift({name: "This is a new todo.",
+	completed: false});
+	};
 
 }
 
