@@ -19,9 +19,9 @@ function TodoCtrl ($scope, dataService) {
   };
 
   $scope.resetTodoState = function() {
-      $scope.todos.forEach(function(todo) {
-         todo.edited = false;
-      });
+    $scope.todos.forEach(function(todo) {
+      todo.edited = false;
+    })
   }
 }
 

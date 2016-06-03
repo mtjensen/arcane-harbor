@@ -5,6 +5,9 @@ var Todo = require('../models/todo');
 
 var router = express.Router();
 
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.json());
+
 router.get('/todos', function(req, res) {
   Todo.find({}, function(err, todos) {
     if (err) {
@@ -16,27 +19,32 @@ router.get('/todos', function(req, res) {
 
 router.post('/todos', function(req, res) {
   var todo = req.body;
-  Todo.create(todo, function(err, todo) {
-    if (err) {
-      return res.status(500).json({ err: err.message });
-    }
-    res.json({ 'todo': todo, message: 'Todo Created' });
-  });
-});
+	Todo.create(todo, function(err, todo) {
+		if(err) {
+			return req.status(500).json({err: err.message})
+		} else {
+			res.json({'todo': todo, message: 'Todo created'})
+		}
+	})
+})
+
+//the colon in the route indicates a required parameter
 
 router.put('/todos/:id', function(req, res) {
-  var id = req.params.id;
+	var id = req.params.id;
   var todo = req.body;
-  if (todo && todo._id !== id) {
-    return res.status(500).json({ err: "Ids don't match!" });
+  if(todo && todo._id !== id) {
+  	return req.status(500).json({err: 'IDs don\'t match'})
   }
   Todo.findByIdAndUpdate(id, todo, {new: true}, function(err, todo) {
-    if (err) {
-      return res.status(500).json({ err: err.message });
-    }
-    res.json({ 'todo': todo, message: 'Todo Updated' });
-  });
-});
+  //pass the new: true option to .findByIdAndUpdate() to tell Mongoose to return the updated document
+  	if(err) {
+			return req.status(500).json({err: err.message})
+		} else {
+			res.json({'todo': todo, message: 'Todo updated'})
+		}
+  })
+})
 
 router.delete('/todos/:id', function(req, res) {
   var id = req.params.id;
