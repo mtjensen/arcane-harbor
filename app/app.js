@@ -4,6 +4,6 @@ var angular = require('angular');
 
 angular.module('todoListApp', []);
 
-require('./scripts/services');
-require('./scripts/directives');
-require('./scripts/controllers');
+require('./scripts/services/servicesIndex');
+require('./scripts/directives/directivesIndex');
+require('./scripts/controllers/controllersIndex');
