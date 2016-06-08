@@ -51,8 +51,9 @@ a {
 	.list .completed label {
 	color: #a7b9c4;
 	text-decoration: line-through; }
-	.list .add {
-	padding: 25px 0 27px 25px; }
+	.list .action-button {
+	padding: 25px 0 27px 25px;
+	display: inline-block; }
 
 input[type="checkbox"] {
 	display:none;
