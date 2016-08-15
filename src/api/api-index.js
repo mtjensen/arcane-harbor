@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var Todo = require('../models/todo');
+var Todo = require('../models/todo-model');
 
 var router = express.Router();
 

@@ -4,7 +4,7 @@ var webpack = require('webpack'),
 module.exports = {
     context: __dirname + '/app',
     entry: {
-        app: './app.js',
+        app: './app-angular.js',
         vendor: ['angular']
     },
     output: {

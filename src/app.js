@@ -1,20 +1,19 @@
 'use strict';
 
 var express = require('express');
-var parser = require('body-parser');
-var router = require('./api');
-var app = express();
 var bodyParser = require('body-parser')
+var router = require('./api/api-index');
+var app = express();
 
 require('./database');
-require('./seed');
+require('./database-seed');
 
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/', express.static('public'));
-app.use(parser.json());
+app.use(bodyParser.json());
 
 app.use('/api', router);
 
